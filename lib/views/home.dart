@@ -18,15 +18,15 @@ class _HomeViewState extends State<HomeView> {
 
   final items = [
     {
+      'icon': Icons.directions_walk,
+      'title': 'Walk In',
+      'subtitle': 'I\'m here to Walk In',
+    },
+    {
       'icon': Icons.calendar_month,
       'title': 'Booked Appointment',
       'subtitle': "I'm here to Book Appointment",
     },
-    {
-      'icon': Icons.directions_walk,
-      'title': 'Walk In',
-      'subtitle': 'I\'m here to Walk In',
-    }
   ];
 
   final walkList = [
@@ -63,7 +63,11 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.sizeOf(context).width;
-
+// Before building the UI, reorder the items
+    final reorderedItems = [
+      ...items.where((item) => item['title'] == 'Walk In'),         // first: Walk In
+      ...items.where((item) => item['title'] != 'Walk In'),         // then the rest
+    ];
     return Scaffold(
       bottomNavigationBar: FooterBar(),
       backgroundColor: Colors.grey.shade100,
@@ -89,7 +93,7 @@ class _HomeViewState extends State<HomeView> {
                   const SizedBox(height: 30),
 
                   ...List.generate(items.length, (index) {
-                    final item = items[index];
+                    final item = reorderedItems[index];
                     return Padding(
                       padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 100.0),
                       child: GroupButtonTile(
@@ -117,7 +121,7 @@ class _HomeViewState extends State<HomeView> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  if (selectedIndex == 1) ...[
+                  if (selectedIndex == 0) ...[
                     // WALK IN selected
                     CustomText(
                       customText: 'Walk In',

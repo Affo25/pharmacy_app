@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
     var baseTheme = ThemeData(brightness: brightness);
 
     return baseTheme.copyWith(
-      textTheme: GoogleFonts.agdasimaTextTheme(baseTheme.textTheme),
+      textTheme: GoogleFonts.robotoTextTheme(baseTheme.textTheme),
     );
   }
 }

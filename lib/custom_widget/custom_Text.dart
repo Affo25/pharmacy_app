@@ -26,12 +26,12 @@ class CustomText extends StatelessWidget {
               decoration: TextDecoration.none,
             )
           : customFontSize==12 || customColor==primaryColor ?
-      GoogleFonts.ubuntu(
+      GoogleFonts.roboto(
         color: customColor,
         fontSize: customFontSize,
         fontWeight: FontWeight.bold,
       ):
-      GoogleFonts.ubuntu(
+      GoogleFonts.roboto(
               color: customColor,
               fontSize: customFontSize,
               fontWeight: FontWeight.w500,
